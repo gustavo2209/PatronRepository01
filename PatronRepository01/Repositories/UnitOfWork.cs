@@ -12,7 +12,7 @@ namespace PatronRepository01.Repositories
 
         #region Repositories
 
-        IRepository<autores> IUnitOfWork.AutorRepository => new GenericRepository<autores>(_dbContext);
+        public IRepository<autores> AutorRepository => new GenericRepository<autores>(_dbContext);
 
         #endregion
 
@@ -21,12 +21,12 @@ namespace PatronRepository01.Repositories
             _dbContext = dbContext;
         }
 
-        void IUnitOfWork.Commit()
+        public void Commit()
         {
             _dbContext.SaveChanges();
         }
 
-        void IUnitOfWork.Dispose()
+        public void Dispose()
         {
             _dbContext.Dispose();
         }
